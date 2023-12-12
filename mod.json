@@ -1,0 +1,8 @@
+{
+  "icon": "https://pm1.narvii.com/6456/2e947e7768bda35914836164187c09d2937d3fa2_hq.jpg",
+  "name": "furry mod",
+  "author": "фурри",
+  "script": "https://raw.githubusercontent.com/Fotiska/X-DLC/main/DLCCore/mod.js",
+  "id": "furry.mod",
+  "xdlcversion": 2
+}
