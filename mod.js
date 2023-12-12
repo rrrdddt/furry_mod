@@ -6,55 +6,45 @@ const ChunkUpdates = FAPI.routes.ChunkUpdates;
 
 const mod = FAPI.registerMod('furry.mod');
 
-// region RGB_LAMP
-const rgb_lamp = mod.registerArrow(0)
-rgb_lamp.name = ['RGB lamp','Разноцветная лампочка','Різнобарвна лампочка','Рознакаляровая лямпа'];
-rgb_lamp.activation = ["On any incoming signal.","Любым входящим сигналом.","Будь-яким вхідним сигналом.","Любым уваходным сігналам."];
-rgb_lamp.action = ["Does nothing.","Ничего не делает.","Нічого не робить.","Нічога не рабіць."];
-rgb_lamp.icon_url = "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/rgb_lamp.png";
-rgb_lamp.clickable = true;
-rgb_lamp.update = (arrow) => {
-    let [color, activation, transmit] = arrow.custom_data;
-
-    if (color === 0) arrow.signal = arrow.signalsCount;
-    else if (activation === 0 && arrow.signalsCount > 0) arrow.signal = color;
-    else if (activation === 1) arrow.signal = color;
-    else if (activation === 2 && arrow.signalsCount === 0) arrow.signal = color;
+// region PURPLE_ARROW
+const purple_arrow = mod.registerArrow(1)
+purple_arrow.name = ['Purple arrow','Фиолетовая стрелка','Фіолетова стрілка','Фіялетавая стрэлка'];
+purple_arrow.activation = ["On any incoming signal.","Любым входящим сигналом.","Будь-яким вхідним сигналом.","Любым уваходным сігналам."];
+purple_arrow.action = ["Sends a signal forwards, skipping `n` cells.","Передает сигнал вперед через `n` клеток.","Передає сигнал вперед через `n` клітини.","Перадае сігнал наперад праз `n` клеткі."];
+purple_arrow.icon_url = "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_arrow.png";
+purple_arrow.textures = ["https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_arrow.png", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
+purple_arrow.clickable = true;
+purple_arrow.update = (arrow) => {
+    if (arrow.signalsCount > 0) arrow.signal = 6;
     else arrow.signal = 0;
 }
-rgb_lamp.transmit = (arrow) => {
-    let [color, activation, transmit] = arrow.custom_data;
-    if (arrow.signal !== 0 && transmit === 1) ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+purple_arrow.transmit = (arrow) => {
+    if (arrow.signal === 6) ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -arrow.custom_data[0], arrow.custom_data[1]));
 }
-rgb_lamp.click = (arrow) => {
-    const COLORS = ['Радужный ( от кол-ва сигналов )', 'Красный', 'Синий', 'Жёлтый', 'Зелёный', 'Оранжевый', 'Фиолетовый', 'Чёрный'];
-    const ACTIVATION = ['При сигнале', 'Всегда ( можно блокировать )', 'При отсутствии сигнала'];
-    const TRANSMIT = ['Нет', 'Следующей стрелочке'];
-
+purple_arrow.click = (arrow) => {
     const modal = ModalHandler.showModal();
-    const colorSelect = modal.createSelect('Цвет', COLORS)
-    colorSelect.value = COLORS[arrow.custom_data[0]];
-    colorSelect.onchange = () => arrow.custom_data[0] = COLORS.indexOf(colorSelect.value);
+    const xSelect = modal.createInput('Вперёд', 'От 0 до 15')
+    xSelect.value = arrow.custom_data[0];
+    xSelect.onchange = () => arrow.custom_data[0] = Math.max(0, Math.min(15, xSelect.value));
 
-    const activationSelect = modal.createSelect('Активация', ACTIVATION)
-    activationSelect.value = ACTIVATION[arrow.custom_data[1]];
-    activationSelect.onchange = () => arrow.custom_data[1] = ACTIVATION.indexOf(activationSelect.value);
-
-    const transmitSelect = modal.createSelect('Передача', TRANSMIT)
-    transmitSelect.value = TRANSMIT[arrow.custom_data[2]];
-    transmitSelect.onchange = () => arrow.custom_data[2] = TRANSMIT.indexOf(transmitSelect.value);
+    const ySelect = modal.createInput('Вбок', 'От 0 до 15')
+    ySelect.value = arrow.custom_data[1];
+    ySelect.onchange = () => arrow.custom_data[1] = Math.max(0, Math.min(15, ySelect.value));
 }
-rgb_lamp.load_cd = (cd) => {
-    let transmit = cd[0] & 1;
-    let activation = (cd[1] >> 3) & 0b11;
-    let color = (cd[2] >> 5) & 0b111;
-    return [color, activation, transmit];
+purple_arrow.draw = (arrow, index) => {
+    if (arrow.custom_data !== undefined && arrow.custom_data[1] !== 0) return index + 1;
+    return index;
 }
-rgb_lamp.save_cd = (arrow) => {
-    return [(arrow.custom_data[0] << 5) | (arrow.custom_data[1] << 3) | arrow.custom_data[2]];
+purple_arrow.load_cd = (cd) => {
+    let x = (cd[0] >> 4) & 0b1111;
+    let y = cd[0] & 0b1111;
+    return [x, y];
 }
-rgb_lamp.custom_data = [4, 0, 0];
-// endregionegion
+purple_arrow.save_cd = (arrow) => {
+    return [(arrow.custom_data[0] << 4) | arrow.custom_data[1]];
+}
+purple_arrow.custom_data = [2, 0];
+// endregion
 // endregion
 
 // TODO: Рандомайзер с настраиваемым рандомом
