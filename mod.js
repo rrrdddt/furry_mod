@@ -65,7 +65,7 @@ arr.icon_url = "https://cdn.discordapp.com/attachments/1124760627555090553/11844
 arr.textures = ["https://cdn.discordapp.com/attachments/1124760627555090553/1184484536239800350/image.png?ex=658c2430&is=6579af30&hm=be61e3af2b9670c7568ce2705e6b36cb83f49e37d7004cbbf724c738682099c9&", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
 arr.clickable = true;
 arr.update = (arrow) => {
-    if (arrow.signalsCount > 0) arrow.signal = arrow.signalsCount;
+    if (arrow.signalsCount > 0) arrow.signal = arrow.signalsCount + 1;
     else arrow.signal = 0;
 }
 arr.transmit = (arrow) => {
