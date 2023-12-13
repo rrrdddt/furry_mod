@@ -69,8 +69,8 @@ arr.update = (arrow) => {
     else arrow.signal = 0;
 }
 arr.transmit = (arrow) => {
-    if (arrow.signal === 6) {
-        const rt = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1)
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, rt.signal));
+    const rt = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1)
+    if (rt.signal > 0) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
     }
 }
