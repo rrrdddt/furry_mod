@@ -65,13 +65,15 @@ arr.icon_url = "https://cdn.discordapp.com/attachments/1124760627555090553/11844
 arr.textures = ["https://cdn.discordapp.com/attachments/1124760627555090553/1184484536239800350/image.png?ex=658c2430&is=6579af30&hm=be61e3af2b9670c7568ce2705e6b36cb83f49e37d7004cbbf724c738682099c9&", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
 arr.clickable = true;
 arr.update = (arrow) => {
-    if (arrow.signalsCount < 0) arrow.signal = 6;
+    if (arrow.signalsCount > 1) arrow.signal = arrow.signalsCount;
     else arrow.signal = 0;
 }
 arr.transmit = (arrow) => {
-    if (arrow.signal === 6) {
+    if (arrow.signal > 0) {
         for (var i = 1; i <= 10; i++) {
-            ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, i));
+            if (arrow.signal > i) {
+                ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, i));
+            }
         }
     }
 }
