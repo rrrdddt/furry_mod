@@ -61,8 +61,8 @@ const arr = mod.registerArrow(2)
 arr.name = ['Purple arrow', 'Фиолетовая стрелка', 'Фіолетова стрілка', 'Фіялетавая стрэлка'];
 arr.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Будь-яким вхідним сигналом.", "Любым уваходным сігналам."];
 arr.action = ["Sends a signal forwards, skipping `n` cells.", "Передает сигнал вперед через `n` клеток.", "Передає сигнал вперед через `n` клітини.", "Перадае сігнал наперад праз `n` клеткі."];
-arr.icon_url = "https://cdn.discordapp.com/attachments/1124760627555090553/1184484536239800350/image.png?ex=658c2430&is=6579af30&hm=be61e3af2b9670c7568ce2705e6b36cb83f49e37d7004cbbf724c738682099c9&";
-arr.textures = ["https://cdn.discordapp.com/attachments/1124760627555090553/1184484536239800350/image.png?ex=658c2430&is=6579af30&hm=be61e3af2b9670c7568ce2705e6b36cb83f49e37d7004cbbf724c738682099c9&", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
+arr.icon_url = "https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218";
+arr.textures = ["https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218", "https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218"];
 arr.clickable = true;
 arr.update = (arrow) => {
     if (arrow.signalsCount > 0) arrow.signal = 6;
