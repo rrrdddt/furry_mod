@@ -19,7 +19,7 @@ purple_arrow.update = (arrow) => {
     else arrow.signal = 0;
 }
 purple_arrow.transmit = (arrow) => {
-    if (arrow.signal === 6) ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -arrow.custom_data[0], arrow.custom_data[1]));
+    if (arrow.signal === 6) ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
 }
 purple_arrow.click = (arrow) => {
     const modal = ModalHandler.showModal();
