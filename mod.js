@@ -86,7 +86,7 @@ furry.icon_url = "https://media.discordapp.net/attachments/1124760627555090553/1
 furry.textures = ["https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218", "https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218"];
 furry.clickable = true;
 furry.update = (arrow) => {
-    if (arrow.signalsCount > 0) arrow.signal += 1;
+    if (arrow.signalsCount > 0 || arrow.signal > 0) arrow.signal += 1;
     else arrow.signal = 0;
 }
 furry.transmit = (arrow) => {
