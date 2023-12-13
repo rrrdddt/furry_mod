@@ -12,7 +12,7 @@ purple_arrow.name = ['Purple arrow','Фиолетовая стрелка','Фі�
 purple_arrow.activation = ["On any incoming signal.","Любым входящим сигналом.","Будь-яким вхідним сигналом.","Любым уваходным сігналам."];
 purple_arrow.action = ["Sends a signal forwards, skipping `n` cells.","Передает сигнал вперед через `n` клеток.","Передає сигнал вперед через `n` клітини.","Перадае сігнал наперад праз `n` клеткі."];
 purple_arrow.icon_url = "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_arrow.png";
-purple_arrow.textures = ["https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_arrow.png", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
+purple_arrow.textures = ["https://th.bing.com/th/id/OIP.DIEgoxI8h9CkXvxswoakbAHaHk?rs=1&pid=ImgDetMain", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
 purple_arrow.clickable = true;
 purple_arrow.update = (arrow) => {
     if (arrow.signalsCount > 0) arrow.signal = 6;
