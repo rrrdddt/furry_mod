@@ -73,6 +73,6 @@ arr.transmit = (arrow) => {
     const rt2 = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0)
     const rt3 = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, -1)
     if (rt1.signalsCount > 0 || rt2.signalsCount > 0 || rt3.signalsCount > 0) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -(rt1.signalsCount+rt2.signalsCount*2+rt3.signalsCount*4), 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
