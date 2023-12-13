@@ -11,7 +11,7 @@ const purple_arrow = mod.registerArrow(1)
 purple_arrow.name = ['Purple arrow','Фиолетовая стрелка','Фіолетова стрілка','Фіялетавая стрэлка'];
 purple_arrow.activation = ["On any incoming signal.","Любым входящим сигналом.","Будь-яким вхідним сигналом.","Любым уваходным сігналам."];
 purple_arrow.action = ["Sends a signal forwards, skipping `n` cells.","Передает сигнал вперед через `n` клеток.","Передає сигнал вперед через `n` клітини.","Перадае сігнал наперад праз `n` клеткі."];
-purple_arrow.icon_url = "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_arrow.png";
+purple_arrow.icon_url = "https://th.bing.com/th/id/OIP.DIEgoxI8h9CkXvxswoakbAHaHk?rs=1&pid=ImgDetMain";
 purple_arrow.textures = ["https://th.bing.com/th/id/OIP.DIEgoxI8h9CkXvxswoakbAHaHk?rs=1&pid=ImgDetMain", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
 purple_arrow.clickable = true;
 purple_arrow.update = (arrow) => {
