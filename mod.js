@@ -11,8 +11,8 @@ const purple_arrow = mod.registerArrow(1)
 purple_arrow.name = ['Purple arrow', 'Фиолетовая стрелка', 'Фіолетова стрілка', 'Фіялетавая стрэлка'];
 purple_arrow.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Будь-яким вхідним сигналом.", "Любым уваходным сігналам."];
 purple_arrow.action = ["Sends a signal forwards, skipping `n` cells.", "Передает сигнал вперед через `n` клеток.", "Передає сигнал вперед через `n` клітини.", "Перадае сігнал наперад праз `n` клеткі."];
-purple_arrow.icon_url = "https://cdn.discordapp.com/attachments/1124760627555090553/1184484536239800350/image.png?ex=658c2430&is=6579af30&hm=be61e3af2b9670c7568ce2705e6b36cb83f49e37d7004cbbf724c738682099c9&";
-purple_arrow.textures = ["https://cdn.discordapp.com/attachments/1124760627555090553/1184484536239800350/image.png?ex=658c2430&is=6579af30&hm=be61e3af2b9670c7568ce2705e6b36cb83f49e37d7004cbbf724c738682099c9&", "https://raw.githubusercontent.com/Fotiska/X-DLC/main/images/purple_diagonal_arrow.png"];
+purple_arrow.icon_url = "https://th.bing.com/th/id/R.8797fd57d88fdb646152e5bd0993fb5d?rik=ZNqObYaqMYJpTA&riu=http%3a%2f%2fpngimg.com%2fuploads%2fmicrocontroller%2fmicrocontroller_PNG1.png&ehk=SSMJmoBbfXecte4ZCpx%2f1DAMox1lhmSRQgvjuTGo3UM%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1";
+purple_arrow.textures = ["https://th.bing.com/th/id/R.8797fd57d88fdb646152e5bd0993fb5d?rik=ZNqObYaqMYJpTA&riu=http%3a%2f%2fpngimg.com%2fuploads%2fmicrocontroller%2fmicrocontroller_PNG1.png&ehk=SSMJmoBbfXecte4ZCpx%2f1DAMox1lhmSRQgvjuTGo3UM%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1", "https://th.bing.com/th/id/R.8797fd57d88fdb646152e5bd0993fb5d?rik=ZNqObYaqMYJpTA&riu=http%3a%2f%2fpngimg.com%2fuploads%2fmicrocontroller%2fmicrocontroller_PNG1.png&ehk=SSMJmoBbfXecte4ZCpx%2f1DAMox1lhmSRQgvjuTGo3UM%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"];
 purple_arrow.clickable = true;
 purple_arrow.update = (arrow) => {
     if (arrow.signalsCount > 0) arrow.signal = 6;
