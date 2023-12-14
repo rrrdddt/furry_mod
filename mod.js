@@ -112,7 +112,12 @@ alu.update = (arrow) => {
 }
 alu.transmit = (arrow) => {
 
-    
+
     const t = 0
-    ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -t, 0));
+    const arrows = [];
+    for (let i = -8; i <= 1; i++) {
+        const arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, i);
+        arrows.push(arrow.signal);
+    }
+    ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
 }
