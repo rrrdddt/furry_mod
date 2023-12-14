@@ -116,9 +116,11 @@ alu.transmit = (arrow) => {
     const t = 0
     var arrows = [];
     for (var i = 0; i < 10; i++) {
-    arrows.push(ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i).signal);
+    arrows.push(ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, i).signal);
     }
     for (var i = 0; i < 10; i++) {
-    ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
+        if (arrows[i] > 0) {
+            ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
+        }
     }
 }
