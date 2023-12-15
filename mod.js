@@ -140,7 +140,7 @@ nigga.textures = ["https://media.discordapp.net/attachments/1124760627555090553/
 nigga.clickable = true;
 nigga.update = (arrow) => {
     if (arrow.signalsCount > 0) {
-        if (arrow.signal == 1) { 
+        if (arrow.signal > 0) { 
             arrow.signal = 2
         } else arrow.signal = 1
         }
