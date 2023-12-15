@@ -119,11 +119,35 @@ alu.transmit = (arrow) => {
         var arro = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, i);
         if (arro !== undefined) {
             arrows.push(arro.signal)
-        } else {arrows.push(0)}
+        } else { arrows.push(0) }
     }
     for (var i = 0; i < 10; i++) {
         if (arrows[i] > 0) {
             ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
         }
+    }
+}
+
+
+// ffff
+
+const nigga = mod.registerArrow(5)
+nigga.name = ['Purple arrow', 'Фиолетовая стрелка', 'Фіолетова стрілка', 'Фіялетавая стрэлка'];
+nigga.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Будь-яким вхідним сигналом.", "Любым уваходным сігналам."];
+nigga.action = ["Sends a signal forwards, skipping `n` cells.", "Передает сигнал вперед через `n` клеток.", "Передає сигнал вперед через `n` клітини.", "Перадае сігнал наперад праз `n` клеткі."];
+nigga.icon_url = "https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218";
+nigga.textures = ["https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218", "https://media.discordapp.net/attachments/1124760627555090553/1184574951135657994/image.png?ex=658c7864&is=657a0364&hm=0858aea452defe70a7dd124ea400d3d72ca45f32e6ae754b75284ef1ab573c21&=&format=webp&quality=lossless&width=218&height=218"];
+nigga.clickable = true;
+nigga.update = (arrow) => {
+    if (arrow.signalsCount > 0) {
+        if (arrow.signal == 1) { 
+            arrow.signal = 2
+        } else arrow.signal = 1
+        }
+    else arrow.signal = 0;
+}
+nigga.transmit = (arrow) => {
+    if (arrow.signal == 1) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
