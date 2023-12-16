@@ -28,9 +28,14 @@ function decimalToBinary(decimal) {
         return twosComplement;
     } else {
         // Если число положительное, просто преобразуем его в двоичное
-        return decimal.toString(2);
+        var binary = decimal.toString(2)
+        while (binary.length < 8) {
+            binary = "0" + binary;
+        }
+        return binary;
     }
 }
+
 function binaryToDecimal(binary) {
     // Проверяем, является ли число отрицательным (первый бит равен 1)
     if (binary[0] === '1') {
