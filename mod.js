@@ -6,7 +6,31 @@ const ChunkUpdates = FAPI.routes.ChunkUpdates;
 
 const mod = FAPI.registerMod('furry.mod');
 
-
+function decimalToBinary(decimal) {
+    if (decimal < 0) {
+        // Если число отрицательное, преобразуем его в положительное
+        decimal = -decimal;
+        // Преобразуем положительное число в двоичное
+        let binary = decimal.toString(2);
+        // Инвертируем биты
+        let inverted = binary.split('').map(bit => bit === '1' ? '0' : '1').join('');
+        // Добавляем 1
+        let twosComplement = (parseInt(inverted, 2) + 1).toString(2);
+        // Дополняем нулями до 8 бит
+        while (twosComplement.length < 8) {
+            twosComplement = '0' + twosComplement;
+        }
+        // Инвертируем биты еще раз, чтобы получить дополнительный код
+        twosComplement = twosComplement.split('').map(bit => bit === '1' ? '0' : '1').join('');
+        // Добавляем 1, чтобы получить дополнительный код
+        twosComplement = (parseInt(twosComplement, 2) + 1).toString(2);
+        // Возвращаем двоичное число в дополнительном коде
+        return twosComplement;
+    } else {
+        // Если число положительное, просто преобразуем его в двоичное
+        return decimal.toString(2);
+    }
+}
 function binaryToDecimal(binary) {
     // Проверяем, является ли число отрицательным (первый бит равен 1)
     if (binary[0] === '1') {
@@ -143,6 +167,7 @@ alu.transmit = (arrow) => {
             t += "0"
         }
     }
+    t = decimalToBinary(binaryToDecimal(t)+1)
      for (var i = 0; i < 8; i++) {
         if (t[i] == "1") {
             ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
