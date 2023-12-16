@@ -143,7 +143,7 @@ alu.transmit = (arrow) => {
             t += "0"
         }
     }
-    ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, binaryToDecimal(t));
+    ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, binaryToDecimal(t)));
 }
 
 
