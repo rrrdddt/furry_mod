@@ -6,6 +6,21 @@ const ChunkUpdates = FAPI.routes.ChunkUpdates;
 
 const mod = FAPI.registerMod('furry.mod');
 
+
+function binaryToDecimal(binary) {
+    // Проверяем, является ли число отрицательным (первый бит равен 1)
+    if (binary[0] === '1') {
+        // Инвертируем биты
+        let inverted = binary.split('').map(bit => bit === '1' ? '0' : '1').join('');
+        // Добавляем 1
+        let decimal = parseInt(inverted, 2) + 1;
+        // Возвращаем отрицательное десятичное число
+        return -decimal;
+    } else {
+        // Если число положительное, просто преобразуем его в десятичное
+        return parseInt(binary, 2);
+    }
+}
 // region PURPLE_ARROW
 const purple_arrow = mod.registerArrow(1)
 purple_arrow.name = ['Purple arrow', 'Фиолетовая стрелка', 'Фіолетова стрілка', 'Фіялетавая стрэлка'];
@@ -113,7 +128,7 @@ alu.update = (arrow) => {
 alu.transmit = (arrow) => {
 
 
-    const t = 0
+    let t = ""
     var arrows1 = [];
     for (var i = 0; i < 8; i++) {
         var arro = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, i);
@@ -123,9 +138,12 @@ alu.transmit = (arrow) => {
     }
     for (var i = 0; i < 8; i++) {
         if (arrows1[i] > 0) {
-            ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
+            t += "1"
+        } else {
+            t += "0"
         }
     }
+    ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, binaryToDecimal(t));
 }
 
 
