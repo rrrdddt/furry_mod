@@ -205,9 +205,9 @@ alu.transmit = (arrow) => {
             sp += "0"
         }
     }
-    if (sp = "000") {
+    if (sp == "000") {
         t = decimalToBinary(binaryToDecimal(t) + binaryToDecimal(t1))
-    } else if (sp = "001") {
+    } else if (sp == "001") {
         t = decimalToBinary(binaryToDecimal(t) - binaryToDecimal(t1))
     }
 
