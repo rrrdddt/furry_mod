@@ -190,8 +190,27 @@ alu.transmit = (arrow) => {
         }
     }
 
+    let sp = ""
+    var arrows3 = [];
+    for (var i = 0; i < 3; i++) {
+        var arro = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, i + 8);
+        if (arro !== undefined) {
+            arrows3.push(arro.signal)
+        } else { arrows2.push(0) }
+    }
+    for (var i = 0; i < 8; i++) {
+        if (arrows3[i] > 0) {
+            sp += "1"
+        } else {
+            sp += "0"
+        }
+    }
+    if (sp = "000") {
+        t = decimalToBinary(binaryToDecimal(t) + binaryToDecimal(t1))
+    } else if (p = "001") {
+        t = decimalToBinary(binaryToDecimal(t) - binaryToDecimal(t1))
+    }
 
-    t = decimalToBinary(binaryToDecimal(t) + binaryToDecimal(t1))
     for (var i = 0; i < 8; i++) {
         if (t[i] == "1") {
             ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
