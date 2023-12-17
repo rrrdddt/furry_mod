@@ -172,13 +172,32 @@ alu.transmit = (arrow) => {
             t += "0"
         }
     }
-    t = decimalToBinary(binaryToDecimal(t)+1)
-     for (var i = 0; i < 8; i++) {
+
+
+    let t1 = ""
+    var arrows2 = [];
+    for (var i = 0; i < 8; i++) {
+        var arro = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, i-8);
+        if (arro !== undefined) {
+            arrows2.push(arro.signal)
+        } else { arrows2.push(0) }
+    }
+    for (var i = 0; i < 8; i++) {
+        if (arrows2[i] > 0) {
+            t1 += "1"
+        } else {
+            t1 += "0"
+        }
+    }
+
+
+    t = decimalToBinary(binaryToDecimal(t) + binaryToDecimal(t1))
+    for (var i = 0; i < 8; i++) {
         if (t[i] == "1") {
             ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
-        } 
+        }
     }
-   
+
 }
 
 
@@ -193,10 +212,10 @@ nigga.textures = ["https://media.discordapp.net/attachments/1124760627555090553/
 nigga.clickable = true;
 nigga.update = (arrow) => {
     if (arrow.signalsCount > 0) {
-        if (arrow.signal > 0) { 
+        if (arrow.signal > 0) {
             arrow.signal = 2
         } else arrow.signal = 1
-        }
+    }
     else arrow.signal = 0;
 }
 nigga.transmit = (arrow) => {
