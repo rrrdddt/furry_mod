@@ -162,17 +162,13 @@ alu.transmit = (arrow) => {
     for (var i = 0; i < 8; i++) {
         var arro = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, i);
         if (arro !== undefined) {
-            arrows1.push(arro.signal)
-        } else { arrows1.push(0) }
+            if (arro.signal > 0) {
+            arrows1.push("1")
+            } else { arrows1.push("0")}
+        } else { arrows1.push("0") }
     }
-    for (var i = 0; i < 8; i++) {
-        if (arrows1[i] > 0) {
-            t += "1"
-        } else {
-            t += "0"
-        }
-    }
-    t = decimalToBinary(binaryToDecimal(t)+1)
+    
+    t = decimalToBinary(binaryToDecimal(arrows1)+1)
      for (var i = 0; i < 8; i++) {
         if (t[i] == "1") {
             ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, i));
