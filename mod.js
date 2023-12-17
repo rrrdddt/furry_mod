@@ -198,7 +198,7 @@ alu.transmit = (arrow) => {
             arrows3.push(arro.signal)
         } else { arrows3.push(0) }
     }
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i <3; i++) {
         if (arrows3[i] > 0) {
             sp += "1"
         } else {
