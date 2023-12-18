@@ -7,32 +7,28 @@ const ChunkUpdates = FAPI.routes.ChunkUpdates;
 const mod = FAPI.registerMod('furry.mod');
 
 function decimalToBinary(decimal) {
-    if (decimal < 0) {
-        // Если число отрицательное, преобразуем его в положительное
-        decimal = -decimal;
-        // Преобразуем положительное число в двоичное
-        let binary = decimal.toString(2);
-        // Инвертируем биты
-        let inverted = binary.split('').map(bit => bit === '1' ? '0' : '1').join('');
-        // Добавляем 1
-        let twosComplement = (parseInt(inverted, 2) + 1).toString(2);
-        // Дополняем нулями до 8 бит
-        while (twosComplement.length < 8) {
-            twosComplement = '0' + twosComplement;
-        }
-        // Инвертируем биты еще раз, чтобы получить дополнительный код
-        twosComplement = twosComplement.split('').map(bit => bit === '1' ? '0' : '1').join('');
-        // Добавляем 1, чтобы получить дополнительный код
-        twosComplement = (parseInt(twosComplement, 2) + 1).toString(2);
-        // Возвращаем двоичное число в дополнительном коде
-        return twosComplement;
-    } else {
+    if (decimal >= 0) {
         // Если число положительное, просто преобразуем его в двоичное
         var binary = decimal.toString(2)
         while (binary.length < 8) {
             binary = "0" + binary;
         }
         return binary;
+    } else {
+        // Если число отрицательное, преобразуем его в положительное
+        decimal = -decimal;
+        // Преобразуем положительное число в двоичное
+        let binary = decimal.toString(2);
+        // Дополняем нулями до 8 бит
+        while (binary.length < 8) {
+            binary = "0" + binary;
+        }
+        // Инвертируем биты
+        let inverted = binary.split('').map(bit => bit === '1' ? '0' : '1').join('');
+        // Добавляем 1
+        let twosComplement = (parseInt(inverted, 2) + 1).toString(2);
+        // Возвращаем двоичное число в дополнительном коде
+        return twosComplement;
     }
 }
 
