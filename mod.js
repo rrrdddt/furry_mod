@@ -209,6 +209,10 @@ alu.transmit = (arrow) => {
         t = decimalToBinary(binaryToDecimal(t) * binaryToDecimal(t1))
     } else if (sp == "011") {
         t = decimalToBinary(Math.ceil(binaryToDecimal(t) / binaryToDecimal(t1)))
+    } else if (sp == "100") {
+        t = decimalToBinary(binaryToDecimal(t)**binaryToDecimal(t1))
+    } else if (sp == "101") {
+        t = decimalToBinary(Math.ceil(binaryToDecimal(t)**(1/binaryToDecimal(t1))))
     }
 
     for (var i = 0; i < 8; i++) {
